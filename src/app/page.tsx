@@ -1,123 +1,202 @@
-import { ShoppingCart, Heart, User, Search, Truck } from "lucide-react"
+import { Search, Plus, ChevronLeft, ChevronRight, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Navigation } from "@/components/navigation"
-import { ProductGallery } from "@/components/product-gallery"
-import { SizeSelector } from "@/components/size-selector"
-import { ColorSelector } from "@/components/color-selector"
-import { Badge } from "@/components/ui/badge"
+import { Sidebar } from "@/components/sidebar"
+import { MovieCard } from "@/components/movie-card"
+import { ArtistCard } from "@/components/artist-card"
+import { ContinueWatching } from "@/components/continue-watching"
+
+const popularMovies = [
+  {
+    title: "Iron Man",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-31%20100801-Y4IHDCd6722tmyhOVGFk7a0N6reNde.png",
+    rating: "7.4",
+    genres: ["Action", "Adventure"],
+  },
+  {
+    title: "Love& Thunder",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-31%20100843-9Fv7of5GrL5lBlb66AFBGuPF6Umn4e.png",
+    rating: "4.5",
+    genres: ["Action", "Adventure"],
+  },
+  {
+    title: "Man Of Steel",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-31%20100955-tX7fLVlEcnQ9Oo3LAxKkW3qFnRCEVF.png",
+    rating: "2.8",
+    genres: ["Action", "Adventure"],
+  },
+]
+
+const favorites = [
+  {
+    title: "Badlands",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-31%20101829-tgCICrXHQp0M3i4Yh905h5JIYJIJsr.png",
+    rating: "7.5",
+    genres: ["Adventure", "Fantasy"],
+  },
+  {
+    title: "See",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-31%20101950-6tviDep11rDa1sLzfAhK97CyPTizKc.png",
+    rating: "7.8",
+    genres: ["Action", "Adventure"],
+  },
+  {
+    title: "Spiderman",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-31%20102035-vnv0NTBHve8s5Mikfz3uRvVQJ7wqZJ.png",
+    rating: "7.2",
+    genres: ["Action", "Fantasy"],
+  },
+]
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="border-b">
-        <div className="mx-auto flex max-w-7xl items-center justify-between p-4">
-          <div className="text-xl font-bold">
-            OZZ<span className="text-pink-500">YY</span>
+    <div className="min-h-screen bg-[#F8F7FF] text-gray-900">
+      <div className="flex">
+        <Sidebar />
+
+        <main className="flex-1 px-8 py-6">
+          {/* Categories */}
+          <div className="mb-8 flex gap-8 border-b border-gray-200">
+            <button className="border-b-2 border-transparent pb-4 text-gray-600 hover:border-gray-300">
+              TV Series
+            </button>
+            <button className="border-b-2 border-red-600 pb-4 font-medium">Movies</button>
+            <button className="border-b-2 border-transparent pb-4 text-gray-600 hover:border-gray-300">Animes</button>
           </div>
 
-          <div className="hidden flex-1 max-w-xl px-8 lg:block">
+          {/* Featured Movie */}
+          <div className="relative mb-12 overflow-hidden rounded-2xl">
+            <div className="relative aspect-[2/1]">
+              <img
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-31%20100449-aozzCIfASe3nesoyjVNdA1IbQF9T33.png"
+                alt="A Tribe Called Judah"
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            </div>
+            <div className="absolute bottom-0 left-0 p-8 text-white">
+              <p className="mb-2 text-sm">Comedy, Action, Drama</p>
+              <h2 className="mb-4 text-4xl font-bold">A TRIBE CALLED JUDAH</h2>
+              <div className="flex gap-4">
+                <Button className="bg-red-600 hover:bg-red-700">
+                  <Play className="mr-2 h-4 w-4" />
+                  Watch
+                </Button>
+                <Button variant="outline" className="border-white bg-white/20 text-white hover:bg-white/30">
+                  <Plus className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Best Artists */}
+          <div className="mb-12">
+            <div className="mb-4 flex items-center justify-between">
+              <h3 className="text-xl font-semibold">Best Artists</h3>
+              <div className="flex gap-2">
+                <Button variant="outline" size="icon" className="rounded-full">
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+                <Button variant="outline" size="icon" className="rounded-full">
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+            <div className="grid grid-cols-4 gap-4">
+              <ArtistCard
+                title="KESARI"
+                image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-31%20093611-EUPg4rQMiJJnUzBlZ3mwCXi93eLvbv.png"
+              />
+              <ArtistCard
+                title="MAN IN BLACK"
+                image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-31%20094329-tx3DhD86CcodplKmdlh5Zd9qi373KU.png"
+              />
+              <ArtistCard
+                title="AQUAMAN"
+                image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-31%20094449-axpiP2UBcaF1yr06QcUvLPMMqssxXb.png"
+              />
+              <ArtistCard
+                title="INCEPTION"
+                image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-31%20094506-K0p6cubsDER61aCrr4EJRfNtqnoYaW.png"
+              />
+            </div>
+          </div>
+
+          {/* Continue Watching */}
+          <div className="mb-12">
+            <div className="mb-4 flex items-center justify-between">
+              <h3 className="text-xl font-semibold">Continue Watching</h3>
+              <div className="flex gap-2">
+                <Button variant="outline" size="icon" className="rounded-full">
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+                <Button variant="outline" size="icon" className="rounded-full">
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-4">
+              <ContinueWatching
+                title="Lisabi"
+                image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-31%20094928-767vU31kDMf6HZBCKu39R8EBSjAseb.png"
+                progress={75}
+              />
+              <ContinueWatching
+                title="Ajosepo"
+                image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-31%20095330-5DymxJnx5M6TVI0L1pXx8devNekMgS.png"
+                progress={30}
+              />
+              <ContinueWatching
+                title="Blood Sisters"
+                image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-31%20095344-EvkEZr8iEP6ZfyWkHPtkcemHDoBDnm.png"
+                progress={50}
+              />
+            </div>
+          </div>
+        </main>
+
+        {/* Right Sidebar */}
+        <aside className="w-80 border-l border-gray-200 px-6 py-6">
+          <div className="mb-8">
             <div className="relative">
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
-              <Input placeholder="Search" className="w-full pl-10" />
+              <Input placeholder="Search" className="pl-9" />
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="relative">
-              <ShoppingCart className="h-5 w-5" />
-              <Badge className="absolute -right-1 -top-1 h-5 w-5 rounded-full p-0 flex items-center justify-center">
-                2
-              </Badge>
-            </Button>
-            <Button variant="ghost" size="icon">
-              <Heart className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon">
-              <User className="h-5 w-5" />
-            </Button>
-          </div>
-        </div>
-
-        <Navigation />
-      </header>
-
-      {/* Breadcrumb */}
-      <div className="mx-auto max-w-7xl px-4 py-4 text-sm">
-        <div className="flex items-center gap-2 text-gray-600">
-          <span>Clothes and shoes</span>
-          <span>›</span>
-          <span>Shoes</span>
-          <span>›</span>
-          <span>ozzyy</span>
-        </div>
-      </div>
-
-      {/* Product Section */}
-      <main className="mx-auto max-w-7xl px-4 py-8">
-        <div className="grid gap-8 lg:grid-cols-2">
-          <ProductGallery />
-
-          <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="h-8 w-8 overflow-hidden rounded-full">
-                <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20250122-WA0031.jpg-MqIC1zuJmfckxPrdnCroPeOBQRFrGg.jpeg"
-                  alt="Ozzyy logo"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div>
-                <div className="font-semibold">
-                  OZZ<span className="text-pink-500">YY</span>
-                </div>
-                <div className="text-sm text-gray-500">HR1325R00-8</div>
-              </div>
-            </div>
-
-            <h1 className="text-2xl font-bold">Ozzyy Stylish loafer vee Custom Force 1</h1>
-
-            <div className="flex items-center gap-2">
-              <div className="flex text-yellow-400">
-                {"★★★★☆".split("").map((star, i) => (
-                  <span key={i}>{star}</span>
+          <div className="space-y-8">
+            <div>
+              <h3 className="mb-4 text-lg font-semibold">Popular Movies</h3>
+              <div className="space-y-4">
+                {popularMovies.map((movie) => (
+                  <MovieCard key={movie.title} {...movie} />
                 ))}
               </div>
-              <span className="text-sm text-gray-600">42 Reviews</span>
-            </div>
-
-            <div className="text-3xl font-bold">$199.00</div>
-
-            <div className="space-y-4">
-              <div>
-                <label className="text-sm font-medium">Colour</label>
-                <ColorSelector />
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between">
-                  <label className="text-sm font-medium">Size</label>
-                  <button className="text-sm text-gray-600 underline">EU Women</button>
-                </div>
-                <SizeSelector />
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <Button className="flex-1 bg-black text-white hover:bg-black/90">Add to cart</Button>
-              <Button variant="outline" size="icon">
-                <Heart className="h-5 w-5" />
+              <Button variant="outline" className="mt-4 w-full bg-red-600 text-white hover:bg-red-700">
+                See More
               </Button>
             </div>
 
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <Truck className="h-4 w-4" />
-              Free delivery on orders over $30.0
+            <div>
+              <h3 className="mb-4 text-lg font-semibold">Favorites</h3>
+              <div className="space-y-4">
+                {favorites.map((movie) => (
+                  <MovieCard key={movie.title} {...movie} />
+                ))}
+              </div>
+              <Button variant="outline" className="mt-4 w-full bg-red-600 text-white hover:bg-red-700">
+                See More
+              </Button>
             </div>
           </div>
-        </div>
-      </main>
+        </aside>
+      </div>
     </div>
   )
 }
